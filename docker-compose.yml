@@ -10,6 +10,8 @@ networks:
 x-n8n: &service-n8n
   image: n8nio/n8n:latest
   networks: ['n8n-network']
+  extra_hosts: # Ajout de extra_hosts ici pour que tous les services n8n le connaissent
+    - "host.docker.internal:host-gateway"
   environment:
     - DB_TYPE=postgresdb
     - DB_POSTGRESDB_HOST=${N8N_POSTGRES_HOST}
